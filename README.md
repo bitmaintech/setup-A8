@@ -20,7 +20,7 @@ Rootfs build instructions
 To build the firmware rootfs run
 
     . environment-angstrom-v2013.06
-    ./build-ltc.sh
+    ./build-ltc.sh L3/L3+(Miner type) 384(Freq)
 
 and then wait for quite a bit for the build to complete.
 
