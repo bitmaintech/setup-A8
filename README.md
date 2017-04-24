@@ -28,7 +28,7 @@ Note: You will need ~11GB free disk space.
 
 The resulting root initramfs will be in
 
-    antminer_firmware/deploy/eglibc/images/beaglebone/Angstrom-bitmainer-eglibc-ipk-v2013.06-beaglebone.rootfs.cpio.gz.u-boot
+    setup-A8/deploy/eglibc/images/beaglebone/Angstrom-bitmainer-eglibc-ipk-v2013.06-beaglebone.rootfs.cpio.gz.u-boot
 
 
 Kernel build instructions
