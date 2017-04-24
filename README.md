@@ -10,8 +10,8 @@ To build a bitmainer miner firmware, first prepare a build machine as per OpenEm
 
 When machine is prepared proceed to prepare the bitmainer firmware build by running
 
-    git clone git@github.com:bitmaintech/Antminer_firmware.git
-    cd antminer_firmware
+    git clone git@github.com:bitmaintech/setup-A8.git
+    cd setup-A8
     MACHINE=beaglebone ./oebb.sh config beaglebone
 
 Rootfs build instructions
@@ -20,7 +20,7 @@ Rootfs build instructions
 To build the firmware rootfs run
 
     . environment-angstrom-v2013.06
-    ./build-ltc.sh L3/L3+(Miner type) 384(Freq)
+    ./build-ltc.sh L3/L3+(Miner type) 384(Freq) [init](Only for the first time.)
 
 and then wait for quite a bit for the build to complete.
 
@@ -41,4 +41,4 @@ To build the Linux kernel image run
 
 which results in a kernel image at
 
-    antminer_firmware/deploy/eglibc/images/beaglebone/
+    setup-A8/deploy/eglibc/images/beaglebone/
