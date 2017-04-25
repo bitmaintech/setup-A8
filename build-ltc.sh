@@ -40,7 +40,7 @@ rm -rf ./build/tmp-angstrom_v2013_06-eglibc/work/armv7ahf-vfp-neon-angstrom-linu
 bitbake LTC -f -D
 
 
-cp ../deploy/eglibc/images/beaglebone/Angstrom-antminer_m-eglibc-ipk-v2013.06-beaglebone.rootfs.cpio.gz.u-boot ./image_items/initramfs.bin.SD
+cp ./deploy/eglibc/images/beaglebone/Angstrom-antminer_m-eglibc-ipk-v2013.06-beaglebone.rootfs.cpio.gz.u-boot ./image_items/initramfs.bin.SD
 cd image_items
 rm -rf *.tar.gz
 c_time=`date "+%Y%m%d%H%M"`
