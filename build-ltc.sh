@@ -6,6 +6,8 @@ date=`date`
 cg_path="./sources/meta-antminer/recipes-bitmianer/cgminer/cgminer-1.0"
 config_path="./sources/meta-antminer/recipes-bitmianer/initscripts/initscripts-1.0"
 
+MACHINE=beaglebone ./oebb.sh config beaglebone
+
 ps -aux | grep bitbake |awk {'print $2'} | xargs kill -9
 
 sed -i -r "s/.*?echo \".*?\" > .*?compile_time/        echo \"$date\" > \${D}\${bindir}\/compile_time/g" ./sources/meta-antminer/recipes-bitmianer/initscripts/initscripts_1.0.bbappend
@@ -13,12 +15,12 @@ sed -i -r "s/.*?echo \".*?\" >> .*?compile_time/        echo \"Antminer $type\" 
 sed -i -r "s/\"bitmain-freq\" : \".*\"/\"bitmain-freq\" : \"$freq\"/g" $config_path/cgminer_l3.conf.factory
 
 rm $cg_path/cgminer-ltc.tar.bz2
-if [ x${type} = "xL3" ];then
+if [ x${type} == "xL3" ];then
 	cp $cg_path/cgminer-ltc.tar.bz2.l3 $cg_path/cgminer-ltc.tar.bz2
 	sed -i -r "s/^Miner_TYPE = \".*\"/\Miner_TYPE = \"L3\"/g" ./conf/local.conf
 fi
 
-if [ x${type} = "xL3+" ];then
+if [ x${type} == "xL3+" ];then
 	cp $cg_path/cgminer-ltc.tar.bz2.l3+ $cg_path/cgminer-ltc.tar.bz2
 	sed -i -r "s/^Miner_TYPE = \".*\"/\Miner_TYPE = \"L3+\"/g" ./conf/local.conf
 fi
@@ -26,10 +28,12 @@ fi
 
 . environment-angstrom-v2013.06
 
+if [ x"$3" != x"init" ];then
 bitbake -c clean initscripts -f -D
 bitbake -c clean lighttpd -f -D
 bitbake -c clean cgminer -f -D
 bitbake -c clean sysvinit-inittab -f -D
+fi
 
 rm -rf ./build/tmp-angstrom_v2013_06-eglibc/work/armv7ahf-vfp-neon-angstrom-linux-gnueabi/initscripts
 
